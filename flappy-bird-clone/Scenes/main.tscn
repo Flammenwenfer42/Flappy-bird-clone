@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c0gu6cyfcrd6o"]
+
+[ext_resource type="PackedScene" uid="uid://5ppnwvmxfk4i" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bas11xt4ie4og" path="res://Scripts/main.gd" id="1_kry3j"]
+[ext_resource type="Script" uid="uid://b0a7ido56je6j" path="res://Scripts/player.gd" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://c76sbek8n640" path="res://Scripts/score.gd" id="3_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dnyl33hkdiob0" path="res://Scenes/Obstacle.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bv3smdx65c22l" path="res://Scenes/Killzone.tscn" id="7_6bp64"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_34df0"]
+distance = -134.0
+
+[node name="Main" type="Node2D" unique_id=1606745383]
+script = ExtResource("1_kry3j")
+Obstacle_scene = ExtResource("4_jjvhh")
+
+[node name="Score Presenter" type="CanvasLayer" parent="." unique_id=1157792115]
+
+[node name="Score" type="Label" parent="Score Presenter" unique_id=2059071477]
+offset_left = 1084.0
+offset_top = 1.0
+offset_right = 1129.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 44
+text = "Hi"
+script = ExtResource("3_21xkr")
+
+[node name="Timer" type="Timer" parent="." unique_id=582239904]
+wait_time = 1.2959999999999998
+autostart = true
+
+[node name="Player" parent="." unique_id=1716923267 instance=ExtResource("1_jjgbg")]
+position = Vector2(0, -1)
+script = ExtResource("2_bo1nx")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1443233227]
+position = Vector2(0, 1)
+zoom = Vector2(4.5, 4.5)
+limit_top = 60
+limit_right = 100000000
+limit_bottom = 60
+position_smoothing_enabled = true
+
+[node name="Killzone" parent="." unique_id=862524099 instance=ExtResource("7_6bp64")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=433318091]
+shape = SubResource("WorldBoundaryShape2D_34df0")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

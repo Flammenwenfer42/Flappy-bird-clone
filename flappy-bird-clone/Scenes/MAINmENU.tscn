@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d1017iin6e23f"]
+
+[ext_resource type="Texture2D" uid="uid://qik7gj63da7t" path="res://Assets/Sprites/يmain menu.png" id="1_fpbyg"]
+[ext_resource type="Script" uid="uid://ds7l67pd0fxs1" path="res://Scripts/PlayAgain.gd" id="2_inr2w"]
+[ext_resource type="Script" uid="uid://co3xen6784nly" path="res://Scenes/button_2.gd" id="3_fpbyg"]
+
+[node name="Control" type="Control" unique_id=1934485915]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1148.0
+offset_bottom = 652.0
+
+[node name="Button" type="Button" parent="." unique_id=1117871816]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 283.0
+offset_right = 503.0
+offset_bottom = 408.0
+theme_override_font_sizes/font_size = 30
+script = ExtResource("2_inr2w")
+
+[node name="Button2" type="Button" parent="." unique_id=204913711]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 312.0
+offset_right = 1087.0
+offset_bottom = 390.0
+script = ExtResource("3_fpbyg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=830398063]
+position = Vector2(577, 325.5)
+scale = Vector2(3.5999997, 3.5833333)
+texture = ExtResource("1_fpbyg")
