@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dtchc78mc5hr"]
+
+[ext_resource type="Script" uid="uid://byw32h4ul3w86" path="res://Scenes/PlayAgainButton.gd" id="1_4pnsc"]
+[ext_resource type="Texture2D" uid="uid://b0jp3dcevsrfp" path="res://Assets/Sprites/Death screen.png" id="1_phjal"]
+[ext_resource type="Script" uid="uid://bo1t0jwshj48w" path="res://Scripts/current_score.gd" id="2_1d6nr"]
+[ext_resource type="Script" uid="uid://cg11i7a7755v1" path="res://Scripts/high_score.gd" id="2_gb262"]
+[ext_resource type="Script" uid="uid://co3xen6784nly" path="res://Scenes/button_2.gd" id="2_n2kst"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wcigx"]
+
+[node name="Control" type="Control" unique_id=1215290088]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=1316124284]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 3.0
+offset_right = 810.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(1, 0.101960786, 0.47058824, 1)
+theme_override_font_sizes/font_size = 100
+text = "YOU LOST!!"
+
+[node name="Button" type="Button" parent="." unique_id=1746925843]
+modulate = Color(0.15700385, 0.085640155, 0.061121672, 1)
+layout_mode = 0
+offset_left = 395.0
+offset_top = 281.0
+offset_right = 780.0
+offset_bottom = 377.0
+theme_override_styles/normal = SubResource("StyleBoxLine_wcigx")
+text = "Play AGAIN"
+script = ExtResource("1_4pnsc")
+
+[node name="Button2" type="Button" parent="." unique_id=185089052]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 393.0
+offset_right = 734.0
+offset_bottom = 438.0
+script = ExtResource("2_n2kst")
+
+[node name="Current_Score" type="Label" parent="." unique_id=188048743]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 461.0
+offset_right = 814.0
+offset_bottom = 530.0
+theme_override_font_sizes/font_size = 50
+text = "Your Score :"
+script = ExtResource("2_1d6nr")
+
+[node name="High_Score" type="Label" parent="." unique_id=196231120]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 582.0
+offset_right = 765.0
+offset_bottom = 653.0
+theme_override_font_sizes/font_size = 50
+text = "High Score"
+script = ExtResource("2_gb262")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1424613261]
+position = Vector2(575.5, 327)
+scale = Vector2(3.5906253, 3.6111112)
+texture = ExtResource("1_phjal")

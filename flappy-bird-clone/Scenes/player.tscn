@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://5ppnwvmxfk4i"]
+
+[ext_resource type="Texture2D" uid="uid://dhggje5eofe8y" path="res://Assets/Sprites/Bird.png" id="2_6t5aa"]
+
+[sub_resource type="GDScript" id="GDScript_v0iea"]
+script/source = "extends CharacterBody2D
+
+const JUMP_VELOCITY = -400.0
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"Jump\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		print(\"Jumped\")
+	move_and_slide()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge6eh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtjo8"]
+radius = 9.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1716923267]
+z_index = 4
+rotation = 0.064577185
+script = SubResource("GDScript_v0iea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1425569635]
+sprite_frames = SubResource("SpriteFrames_ge6eh")
+animation = &"Jump"
+frame = 2
+frame_progress = 0.1259482
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=784846555]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_vtjo8")

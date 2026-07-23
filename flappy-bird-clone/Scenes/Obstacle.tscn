@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dnyl33hkdiob0"]
+
+[ext_resource type="Script" uid="uid://djb6230syolp5" path="res://Scripts/Obstacle.gd" id="1_2sxyv"]
+[ext_resource type="PackedScene" uid="uid://b2wnoc5lcmbf3" path="res://Scenes/pipe.tscn" id="2_1v7b5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34df0"]
+size = Vector2(10, 183)
+
+[node name="Node2D" type="Node2D" unique_id=1348366752]
+script = ExtResource("1_2sxyv")
+
+[node name="pipe1" parent="." unique_id=197451707 instance=ExtResource("2_1v7b5")]
+position = Vector2(31, -23)
+
+[node name="pipe2" parent="." unique_id=110763936 instance=ExtResource("2_1v7b5")]
+position = Vector2(-1, -238)
+rotation = 3.1415927
+
+[node name="Win" type="Area2D" parent="." unique_id=936136384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win" unique_id=1427695738]
+position = Vector2(16, -130)
+shape = SubResource("RectangleShape2D_34df0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=927160574]
+position = Vector2(16, -262)
+rect = Rect2(-9, -4, 16, 266)
+
+[connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
